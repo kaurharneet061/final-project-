@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h1>💳 Checkout</h1>
+
+        <h2>Customer: {{ customer }}</h2>
+        <h2>Total Paid: ${{ total }}</h2>
+
+        <p style="color: green; font-weight: bold;">
+            {{ message }}
+        </p>
+
+        <a href="/">
+            <button>Back to Shop</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
