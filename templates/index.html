@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flower Shop System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌸 Flower Shop System</h1>
+
+    <!-- ADD FLOWER -->
+    <div class="card">
+        <h2>Add Flower</h2>
+
+        <form action="/add" method="post">
+            <input type="text" name="name" placeholder="Flower Name" required>
+            <input type="number" step="0.01" name="price" placeholder="Price" required>
+            <input type="number" name="qty" placeholder="Quantity" required>
+            <button type="submit">Add Flower</button>
+        </form>
+    </div>
+
+    <!-- INVENTORY -->
+    <div class="card">
+        <h2>Inventory</h2>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+            </tr>
+
+            {% for f in flowers %}
+            <tr>
+                <td>{{ f[0] }}</td>
+                <td>${{ f[1] }}</td>
+                <td>{{ f[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- ORDER -->
+    <div class="card">
+        <h2>Create Order</h2>
+
+        <form action="/order" method="post">
+
+            <input type="text" name="customer" placeholder="Customer Name" required>
+
+            <input type="text" name="flower_name" placeholder="Flower Name" required>
+
+            <input type="number" name="qty" placeholder="Quantity" required>
+
+            <button type="submit">Add to Order</button>
+        </form>
+
+        <h3>💰 Total: ${{ total }}</h3>
+
+        <!-- CHECKOUT BUTTON -->
+        <a href="/checkout">
+            <button class="checkout">Checkout</button>
+        </a>
+
+        <!-- CLEAR BUTTON -->
+        <a href="/clear">
+            <button class="clear">Clear Order</button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
